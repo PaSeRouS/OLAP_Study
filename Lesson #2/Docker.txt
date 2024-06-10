@@ -10,7 +10,7 @@ docker rm -f serov-nginx
 -------------------------------------
 Создание контейнера
 docker run -d \
-	--name serov-rediss \
+	--name serov-redis \
 	-m 256m \
 	--restart always \
 	-e ALLOW_EMPTY_PASSWORD=yes \
