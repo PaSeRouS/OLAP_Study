@@ -1,5 +1,5 @@
 Создание контейнера
-docker run --name serov-nginx -m 256m --restart always --network serovnet -v ./nginx:/app -p 9000:8080 bitnami/nginx:latest
+docker run -d --name serov-nginx -m 256m --restart always --network serovnet -v ./nginx:/app -p 9000:8080 bitnami/nginx:latest
 
 Рестарт контейнера
 docker restart serov-nginx
@@ -9,7 +9,15 @@ docker rm -f serov-nginx
 
 -------------------------------------
 Создание контейнера
-docker run --name serov-redis -m 256m --restart always -e ALLOW_EMPTY_PASSWORD=yes --network serovnet -v ./redis:/bitnami/redis/data -p 6379:6379 bitnami/redis:latest
+docker run -d \
+	--name serov-rediss \
+	-m 256m \
+	--restart always \
+	-e ALLOW_EMPTY_PASSWORD=yes \
+	--network serovnet \
+	-v ./redis:/bitnami/redis/data \
+	-p 6379:6379 \
+	bitnami/redis:latest
 
 Рестарт контейнера
 docker restart serov-redis
