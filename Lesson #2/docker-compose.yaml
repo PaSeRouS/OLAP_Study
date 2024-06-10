@@ -1,0 +1,36 @@
+services:
+  redis:
+    container_name: serov-redis
+    image: bitnami/redis:latest
+    environment:
+      ALLOW_EMPTY_PASSWORD: yes
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    volumes:
+      - ./redis:/bitnami/redis/data
+    ports:
+      - "6379:6379"
+    networks:
+      - serovnet
+    restart: always
+
+  nginx:
+    container_name: serov-nginx
+    image: bitnami/nginx:latest
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    volumes:
+      - ./nginx:/app
+    ports:
+      - "9000:8080"
+    networks:
+      - serovnet
+    restart: always
+
+networks:
+  serovnet:
+    driver: bridge
