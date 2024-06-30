@@ -17,6 +17,6 @@ select *
 from stg.Shk_LostPost;
 
 
--- Проверяем данные в current таблице
+-- Проверяем данные в currently таблице
 select *
 from currently.Shk_LostPost;
