@@ -12,5 +12,3 @@ engine = MergeTree() ORDER BY shk_id;
 create materialized view stg.Shk_LostPost_currently to currently.Shk_LostPost as
 select shk_id, dt, operation_code, lostreason_id
 from stg.Shk_LostPost;
-
-show view stg.Shk_LostPost_currently;
